@@ -4,56 +4,24 @@
 
 <main class="home">
     <div class="top" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
-        <div class="top-banner">
-            <img src="./assets/images/bg-banner.png" alt="" class="img-fluid w-100">
-            <div class="top-container d-flex flex-column pl-5">
-                <h1>
-                    For Product
-                </h1>
-                <p>
-                    Hire a YTubers and let them do the maketing for you
-                </p>
-                <div>
-                    <button class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold">
-                        Read More
-                    </button>
+        {% for slide in sliders %}
+            <div class="top-banner">
+                <img src="{{ slide.photo.url }}" alt="" class="img-fluid w-100">
+                <div class="top-container d-flex flex-column pl-5">
+                    <h1>
+                        {{ slide.headline }}
+                    </h1>
+                    <p>
+                        {{ slide.subtitle }}
+                    </p>
+                    <div>
+                        <button class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold">
+                            <a href="{{ slide.button_link }}" target="_blank">{{ slide.button_text }}</a>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="top-banner">
-            <img src="./assets/images/bg-banner.png" alt="" class="img-fluid w-100">
-            <div class="top-container d-flex flex-column pl-5">
-                <h1>
-                    For Product Promotion
-                </h1>
-                <p>
-                    Hire a YTubers and let them do the maketing for you
-                </p>
-                <div>
-                    <button class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold">
-                        Read More
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="top-banner">
-            <img src="./assets/images/bg-banner.png" alt="" class="img-fluid w-100">
-            <div class="top-container d-flex flex-column pl-5">
-                <h1>
-                    For Product Promotion
-                </h1>
-                <p>
-                    Hire a YTubers and let them do the maketing for you
-                </p>
-                <div>
-                    <button class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold">
-                        Read More
-                    </button>
-                </div>
-            </div>
-        </div>
-
-
+        {% endfor %}
     </div>
 
 
