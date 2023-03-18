@@ -4,11 +4,9 @@ from .models import Youtuber
 # Create your views here.
 def youtubers(request):
     tubers = Youtuber.objects.order_by('-created_date')
-
     data = {
         'tubers': tubers,
     }
-    
     return render(request, 'youtubers/youtubers.html', data)
 
 def youtubers_detail(request, id):
@@ -19,4 +17,16 @@ def youtubers_detail(request, id):
     return render(request, 'youtubers/youtuber_detail.html', data)
 
 def search(request):
-    pass
+    #POST request is a request that gets stored into the database
+    #GET request is not stored into the database
+    tubers = Youtuber.objects.order_by('-created_date')
+
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        if keyword:
+            tubers = tubers.filter(name__icontains=keyword)
+
+    data = {
+        'tubers': tubers,
+    }
+    return render(request, 'youtubers/search.html', data)
